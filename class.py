@@ -1,5 +1,6 @@
 import os 
 import time 
+memberance=open("gym_membrance.txt","a+")
 def clear_screen():
     os.system("cls" if os.name =="nt" else "clear")
 class Gym :
@@ -23,40 +24,32 @@ def search():
     a=input("Enter your choise :")
     if a=="1":
         q=input("Enter to membership ID to search :")
-        for i  in gymer :
+        for i  in  memberance :
             if i.Id.strip().lower() == q.strip().lower(): 
                 print("_"*20)
-                print(f"name      : {i.name}")
-                print(f"ID     : {i.Id}")
-                print(f"status    : {i.status}")
+                i.print_all()
                 print("_"*20)
-
-                
     elif a=="2":
         name1=input("Enter to membership name to search :")
-        for i  in gymer :
+        for i  in  memberance :
             if i.name.lower() == name1.lower() :
                 print("_"*20)
-                print(f"name      : {i.name}")
-                print(f"ID     : {i.Id}")
-                print(f"status    : {i.status}")
+                i.print_all()
                 print("_"*20)
 
                 
     elif a=="3":
         status1=input(r"Enter to membership status to search active \ inactive :")
-        for i  in gymer :
+        for i  in  memberance :
             if i.status.lower()==status1.lower() :
                 print("_"*20)
-                print(f"name      : {i.name}")
-                print(f"ID     : {i.Id}")
-                print(f"status    : {i.status}")
+                i.print_all()
                 print("_"*20)
 
     else :
         print("invended Erorr you must enter 1 or 2 or 3")
                 
-gymer=[]
+
 while True :
     print ("\n choose an action \n")
     print("1.Add new member")
@@ -65,17 +58,18 @@ while True :
     print("4.Exit\n")
     x=input("enter your choise :")
     if x=="1":
-        gymer.append(added())
+        added()
+        memberance.write(gymer1)
         time.sleep(2)
         print("user added sucessfully!")
         time.sleep(2)
         clear_screen()
     elif x=="2":
         clear_screen()
-        if not gymer:
+        if not  memberance:
             print("do not found employee")
             time.sleep(2)
-        elif gymer :
+        elif  memberance :
             print("dis play all new gmyer ...") 
             time.sleep(3)    
             for i , gymer1 in enumerate(gymer , start=1):
@@ -98,7 +92,7 @@ while True :
 
 
 
-
+memberance.close()
 
 
 
